@@ -26,7 +26,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/credentials/master.key
 package-lock.json
-Gemfile.lock
 
 /public/packs
 /public/packs-test
