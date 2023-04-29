@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: pub-sub_production
   username: pub-sub
   password: <%= ENV['PUB-SUB_DATABASE_PASSWORD'] %>
