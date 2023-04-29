@@ -1,7 +1,7 @@
 databases:
   - name: pubsub
     databaseName: pubsub
-    user: pubsub
+    user: pubsub_user
 
 services:
   - type: web
