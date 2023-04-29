@@ -1,20 +1,13 @@
-import React from "react";
-import { render } from "react-dom";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from 'react-router-dom'
-import Home from '../components/Home'
+// This file is automatically compiled by Webpack, along with any other files
+// present in this directory. You're encouraged to place your actual application logic in
+// a relevant structure within app/javascript and only use these pack files to reference
+// that code so it'll be compiled.
 
-document.addEventListener('DOMContentLoaded', () => {
-  render(
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-      </Switch>
-    </Router>,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+import "channels"
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()

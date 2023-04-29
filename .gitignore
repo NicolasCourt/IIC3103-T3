@@ -13,19 +13,20 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
-
-/node_modules
-/yarn-error.log
 
 /public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/credentials/master.key
-package-lock.json
+/config/master.key
 
 /public/packs
 /public/packs-test
@@ -33,8 +34,5 @@ package-lock.json
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
 
 /config/credentials/production.key

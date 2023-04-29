@@ -8,10 +8,6 @@ default: &default
   cache_path: tmp/cache/webpacker
   webpack_compile_output: true
 
-  entry:
-    application:
-      - 'app/javascript/packs/application.js'
-
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
   additional_paths: []
@@ -37,6 +33,8 @@ default: &default
     - .woff2
 
   extensions:
+    - .tsx
+    - .ts
     - .jsx
     - .mjs
     - .js
