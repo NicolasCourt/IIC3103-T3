@@ -28,6 +28,6 @@ ngrok running (ngrok http 3000 --> type url on base_controller.rb line 48)
 
 rails s
 
-[Localhost](localhost:3000)
+[Localhost](http://localhost:3000)
 
 [:)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
