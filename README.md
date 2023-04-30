@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[PubSub link](https://pubsub.onrender.com)
 
-Things you may want to cover:
+endpoint: https://pubsub.onrender.com/transaction
 
-* Ruby version
+## Versions
+Rails 6.1.7.3
+ruby 3.0.0p0
+Postgres 15
+Node 14.18.0
 
-* System dependencies
 
-* Configuration
+## To run locally:
 
-* Database creation
+bundle install
+yarn install
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+postgresql running (sudo service postgresql start /  service postgresql start)
+redis running (redis-server)
+ngrok running (ngrok http 3000 --> type url on base_controller.rb line 48)
+rails s
