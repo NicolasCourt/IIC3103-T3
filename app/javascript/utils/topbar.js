@@ -5,7 +5,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import { makeStyles } from '@material-ui/styles';
 import Switch from '@mui/material/Switch';
 
@@ -19,7 +19,9 @@ const useStyles = makeStyles({
   },
   horizontal: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingRight: '40px'
   }
 })
 
@@ -37,7 +39,7 @@ const Topbar = (props) => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <div className={classes.horizontal}>
-            <RestaurantIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <PublishedWithChangesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Box
               className={classes.brand}
               sx={{ display: { xs: 'none', md: 'flex' }}}

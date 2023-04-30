@@ -4,7 +4,7 @@ module Api
 
       def post
         puts params
-
+        return render json: { message: "ok"}, status: :ok
       end
 
       private

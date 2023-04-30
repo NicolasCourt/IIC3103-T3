@@ -45,7 +45,7 @@ module Api
       private
 
       def set_url
-        @url = Rails.env.production? ? Rails.application.credentials[:api][:url] : "https://5043-181-43-126-31.ngrok.io"
+        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/transaction" : "https://5043-181-43-126-31.ngrok.io/transaction"
       end
 
     end
