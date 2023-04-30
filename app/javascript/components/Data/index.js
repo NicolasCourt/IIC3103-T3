@@ -1,6 +1,6 @@
 import React from "react";
 
-const Subscription = () => {
+const Data = () => {
 
   return (
     <div>
@@ -9,4 +9,4 @@ const Subscription = () => {
   )
 }
 
-export default Subscription
+export default Data

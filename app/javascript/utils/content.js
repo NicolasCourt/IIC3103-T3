@@ -37,13 +37,18 @@ const useStyles = makeStyles({
 
 
 const Content = (props) => {
+
+  const {
+    subscribed,
+    subEvent
+  } = props
   
   const classes = useStyles()
 
 
   return (
     <div className={classes.mainContainer}>
-      <Topbar />
+      <Topbar subscribed={subscribed} subEvent={subEvent}/>
       <div className={classes.childrenContainerTwo}>
         <div className={classes.container}>
           <div className={classes.subContainer}>

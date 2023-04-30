@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/transaction', to: 'transaction#post'
+      get '/status_subscription', to: 'base#status_subscription'
+      get '/create_subscription', to: 'base#create_subscription'
+      get '/delete_subscription', to: 'base#delete_subscription'
     end
   end
 
