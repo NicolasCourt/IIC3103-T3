@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'site#index'
 
+  root to: 'site#index'
   get '*path', to: 'site#index', via: :all
 end
