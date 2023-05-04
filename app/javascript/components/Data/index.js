@@ -4,7 +4,7 @@ const Data = () => {
 
   return (
     <div>
-      ?
+      ??
     </div>
   )
 }

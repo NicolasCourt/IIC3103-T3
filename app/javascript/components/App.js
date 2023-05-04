@@ -46,13 +46,13 @@ const App = () => {
     getStatus();
   }
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const interval = setInterval(() => {
       getStatus();
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
+ */
   return (
     <Router>
       <Content subscribed={subscribed} subEvent={subEvent}>

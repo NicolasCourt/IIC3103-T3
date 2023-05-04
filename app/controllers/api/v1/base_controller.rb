@@ -3,6 +3,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
+require 'httparty'
 
 module Api
   module V1
@@ -10,6 +11,12 @@ module Api
       before_action :set_url, except: [:status_subscription]
 
       def create_subscription
+
+        url = "#{Rails.application.credentials[:subscription][:url]}/#{Rails.application.credentials[:id]}"
+        response2 = HTTParty.post(url, 
+                         body: { "url": @url }.to_json, 
+                         headers: { "Content-Type" => "application/json" }, 
+                         verify: true) # enable SSL verification, set to false to disable
         Rails.cache.write("subscription", "active")
 
         url = URI("#{Rails.application.credentials[:subscription][:url]}/#{Rails.application.credentials[:id]}")
@@ -21,6 +28,7 @@ module Api
         request.body = { "url": @url }.to_json
 
         response = http.request(request)
+        binding.pry
         puts response
         return render json: { data: response }, status: :ok
       end
@@ -45,7 +53,7 @@ module Api
       private
 
       def set_url
-        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/transaction" : "https://5043-181-43-126-31.ngrok.io/transaction"
+        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/transaction" : "http://d5b3-181-43-215-193.ngrok.io/transaction"
       end
 
     end

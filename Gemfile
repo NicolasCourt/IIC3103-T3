@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'redis-rails'
 gem 'redis'
 gem 'hiredis'
+gem 'pry'
+gem 'httparty'
