@@ -31,6 +31,9 @@ const App = () => {
       axios
         .get('/api/v1/delete_subscription')
         .then( resp => {
+          if (resp.status === 200){
+            setSubscribed(false)
+          }
           console.log(resp)
         })
         .catch( resp => console.log(resp) )
@@ -39,20 +42,26 @@ const App = () => {
       axios
         .get('/api/v1/create_subscription')
         .then( resp => {
+          if (resp.status === 200){
+            setSubscribed(true)
+          }
           console.log(resp)
         })
         .catch( resp => console.log(resp) )
     }
-    getStatus();
   }
 
- /*  useEffect(() => {
+  useEffect(() => {
+      getStatus();
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       getStatus();
-    }, 3000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
- */
+
   return (
     <Router>
       <Content subscribed={subscribed} subEvent={subEvent}>
