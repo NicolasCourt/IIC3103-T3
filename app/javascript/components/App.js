@@ -9,13 +9,16 @@ import Data from './Data';
 import Content from "../utils/content";
 import axios from 'axios'
 
+const baseUrl = 'https://pubsub.onrender.com'
+// const baseUrl = 'https://localhost:3000'
+
 const App = () => {
 
   const [subscribed, setSubscribed] = useState(false)
 
   const getStatus = async () => {
     axios
-      .get('/api/v1/status_subscription')
+      .get(baseUrl + '/api/v1/status_subscription')
       .then( resp => {
         if (resp.data.subscription === 'active'){
           setSubscribed(true)
@@ -29,7 +32,7 @@ const App = () => {
   const subEvent = () => {
     if (subscribed){
       axios
-        .get('/api/v1/delete_subscription')
+        .get(baseUrl + '/api/v1/delete_subscription')
         .then( resp => {
           if (resp.status === 200){
             setSubscribed(false)
@@ -40,7 +43,7 @@ const App = () => {
 
     } else {
       axios
-        .get('/api/v1/create_subscription')
+        .get(baseUrl + '/api/v1/create_subscription')
         .then( resp => {
           if (resp.status === 200){
             setSubscribed(true)
