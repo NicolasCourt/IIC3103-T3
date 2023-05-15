@@ -7,43 +7,29 @@ require 'httparty'
 
 module Api
   module V1
-    class BaseController < ActionController::Base
+    class BaseController < ApplicationController
+      skip_before_action :verify_authenticity_token
       before_action :set_url, except: [:status_subscription]
 
       def create_subscription
-
         url = "#{Rails.application.credentials[:subscription][:url]}/#{Rails.application.credentials[:id]}"
-        response2 = HTTParty.post(url, 
+        response = HTTParty.post(url, 
                          body: { "url": @url }.to_json, 
                          headers: { "Content-Type" => "application/json" }, 
                          verify: true) # enable SSL verification, set to false to disable
-        Rails.cache.write("subscription", "active")
-
-        url = URI("#{Rails.application.credentials[:subscription][:url]}/#{Rails.application.credentials[:id]}")
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true # if the API uses HTTPS
-
-        request = Net::HTTP::Post.new(url)
-        request["Content-Type"] = "application/json"
-        request.body = { "url": @url }.to_json
-
-        response = http.request(request)
-        binding.pry
-        puts response
-        return render json: { data: response }, status: :ok
+        
+        Rails.cache.write("subscription", "active") if response.code == 200
+        return render json: JSON.parse(response.body), status: response.code
       end
 
       def delete_subscription
-        Rails.cache.delete("subscription")
-
-        url = URI("#{Rails.application.credentials[:subscription][:url]}/#{Rails.application.credentials[:id]}")
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true # Enable SSL/TLS
-
-        request = Net::HTTP::Delete.new(url)
-
-        response = http.request(request)
-        return render json: {data: response}, status: :ok
+        url = "#{Rails.application.credentials[:subscription][:url]}/#{Rails.application.credentials[:id]}"
+        response = HTTParty.delete(
+          url,
+          headers: { "Content-Type" => "application/json" }, 
+          verify: true)
+        Rails.cache.delete("subscription") if response.code == 200
+        return render json: JSON.parse(response.body), status: response.code
       end
 
       def status_subscription
@@ -53,7 +39,7 @@ module Api
       private
 
       def set_url
-        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/transaction" : "http://d5b3-181-43-215-193.ngrok.io/transaction"
+        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/api/v1/transaction" : "https://4b59-181-43-38-41.ngrok.io/api/v1/transaction"
       end
 
     end
