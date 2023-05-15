@@ -17,7 +17,7 @@ module Api
                          body: { "url": @url }.to_json, 
                          headers: { "Content-Type" => "application/json" }, 
                          verify: true) # enable SSL verification, set to false to disable
-        
+        puts response
         Rails.cache.write("subscription", "active") if response.code == 200
         return render json: JSON.parse(response.body), status: response.code
       end
@@ -28,6 +28,7 @@ module Api
           url,
           headers: { "Content-Type" => "application/json" }, 
           verify: true)
+        puts response
         Rails.cache.delete("subscription") if response.code == 200
         return render json: JSON.parse(response.body), status: response.code
       end
@@ -37,7 +38,6 @@ module Api
       end
 
       def set_url
-        puts Rails.env
         @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/api/v1/transaction" : "https://ba17-181-43-38-41.ngrok.io/api/v1/transaction"
       end
 
