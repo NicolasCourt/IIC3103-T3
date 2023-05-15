@@ -36,10 +36,8 @@ module Api
         return render json: { "subscription": Rails.cache.read("subscription") }
       end
 
-      private
-
       def set_url
-        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/api/v1/transaction" : "https://4b59-181-43-38-41.ngrok.io/api/v1/transaction"
+        @url = Rails.env.production? ? "#{Rails.application.credentials[:api][:url]}/api/v1/transaction" : "https://ba17-181-43-38-41.ngrok.io/api/v1/transaction"
       end
 
     end

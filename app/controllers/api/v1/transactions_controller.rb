@@ -24,8 +24,6 @@ module Api
         return render json: data, status: :ok
       end
 
-      private
-
       def read_message(parameters)
         return false if Transaction.find_by(messageId: parameters[:messageId])
 
