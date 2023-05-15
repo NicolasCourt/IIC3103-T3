@@ -17,8 +17,6 @@ module Api
                          body: { "url": @url }.to_json, 
                          headers: { "Content-Type" => "application/json" }, 
                          verify: true) # enable SSL verification, set to false to disable
-        puts response
-        puts url
         Rails.cache.write("subscription", "active") if response.code == 200
         return render json: JSON.parse(response.body), status: response.code
       end
@@ -29,7 +27,6 @@ module Api
           url,
           headers: { "Content-Type" => "application/json" }, 
           verify: true)
-        puts response
         Rails.cache.delete("subscription") if response.code == 200
         return render json: JSON.parse(response.body), status: response.code
       end
