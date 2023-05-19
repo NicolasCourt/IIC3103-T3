@@ -20,52 +20,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import dayjs from 'dayjs';
 import InputLabel from '@mui/material/InputLabel';
-
-const useStyles = makeStyles({
-  basicInformation: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  row: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  mainTitle: {
-    color: '#1976d2',
-    fontSize: '36px',
-  },
-  mainTitleContainer: {
-    paddingBottom: '20px'
-  },
-  basicInformation: {
-    padding: '15px'
-  },
-  conciliationData: {
-    padding: '15px'
-  },
-  histogramContainer: {
-    paddingTop: '30px'
-  },
-  histoFilters: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'flex-end',
-    paddingBottom: '15px'
-  },
-  sectionTitle: {
-    paddingBottom: '10px',
-    color: 'rgb(79, 101, 241)'
-  },
-  conciliaciones: {
-    paddingTop: '15px',
-    paddingBottom: '15px'
-  },
-  conciliacion: {
-    padding: '5px'
-  }
-})
+import { useStyles } from "../../utils/styles";
 
 const baseUrl = 'https://pubsub.onrender.com'
 // const baseUrl = 'http://localhost:3000'

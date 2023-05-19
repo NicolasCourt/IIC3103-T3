@@ -8,22 +8,7 @@ import Container from '@mui/material/Container';
 import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import { makeStyles } from '@material-ui/styles';
 import Switch from '@mui/material/Switch';
-
-const useStyles = makeStyles({
-  brand: {
-    display: { xs: 'none', md: 'flex' },
-    fontWeight: 900,
-    fontSize: '20px',
-    letterSpacing: '.3rem',
-    paddingTop: '0px !important',
-  },
-  horizontal: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    paddingRight: '40px'
-  }
-})
+import { useStyles } from './styles';
 
 const Topbar = (props) => {
 
