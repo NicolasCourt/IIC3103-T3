@@ -3,8 +3,8 @@ module Api
     class TransactionsController < Api::V1::BaseController
 
       def create
-        read_message(transaction_params)
-        head :ok
+        created = read_message(transaction_params)
+        head :ok if created
       end
 
       def stats
@@ -89,9 +89,9 @@ module Api
           publishTime: DateTime.parse(parameters[:publishTime])
         )
         if new_transaction.save
-          puts "done"
+          return true
         else 
-          puts "error"
+          return false
         end
 
 
