@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/status_subscription', to: 'base#status_subscription'
       get '/create_subscription', to: 'base#create_subscription'
       get '/delete_subscription', to: 'base#delete_subscription'
+      get '/stats', to: 'transactions#stats'
     end
   end
 

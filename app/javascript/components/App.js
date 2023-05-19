@@ -10,7 +10,7 @@ import Content from "../utils/content";
 import axios from 'axios'
 
 const baseUrl = 'https://pubsub.onrender.com'
-// const baseUrl = 'https://localhost:3000'
+// const baseUrl = 'http://localhost:3000'
 
 const App = () => {
 
@@ -37,7 +37,6 @@ const App = () => {
           if (resp.status === 200){
             setSubscribed(false)
           }
-          console.log(resp)
         })
         .catch( resp => console.log(resp) )
 
@@ -48,7 +47,6 @@ const App = () => {
           if (resp.status === 200){
             setSubscribed(true)
           }
-          console.log(resp)
         })
         .catch( resp => console.log(resp) )
     }
